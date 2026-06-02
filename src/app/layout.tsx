@@ -1,18 +1,11 @@
 import type { Metadata } from "next";
-import { Sarabun, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Kanit, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const sarabun = Sarabun({
-  variable: "--font-th",
+const kanit = Kanit({
+  variable: "--font-kanit",
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin", "thai"],
-  display: "swap",
-});
-
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-en",
-  weight: ["400", "500", "600", "700"],
-  subsets: ["latin"],
   display: "swap",
 });
 
@@ -35,7 +28,7 @@ export default function RootLayout({
   return (
     <html
       lang="th"
-      className={`${sarabun.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
+      className={`${kanit.variable} ${jetbrainsMono.variable}`}
     >
       <body>{children}</body>
     </html>

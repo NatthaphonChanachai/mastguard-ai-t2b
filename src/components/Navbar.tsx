@@ -14,7 +14,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 const navItems = [
-  { href: '#problem', label: 'ปัญหา' },
+  { href: '#problem', label: 'Problem' },
   { href: '#solution', label: 'Solution' },
   { href: '#features', label: 'Features' },
   { href: '#dashboard', label: 'Dashboard' },
