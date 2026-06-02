@@ -113,11 +113,11 @@ export default function Hero() {
 
               <div className="status-ticker">
                 <div className="ticker-item">
-                  <span className="ticker-val" style={{ color: '#00ff88' }}>48</span>
+                  <span className="ticker-val" style={{ color: 'var(--ok-green)' }}>48</span>
                   <div className="ticker-label">{T.lampsOnline}</div>
                 </div>
                 <div className="ticker-item">
-                  <span className="ticker-val" style={{ color: '#ffa500' }}>2</span>
+                  <span className="ticker-val" style={{ color: 'var(--warn-amber)' }}>2</span>
                   <div className="ticker-label">{T.alerts}</div>
                 </div>
                 <div className="ticker-item">
@@ -125,7 +125,7 @@ export default function Hero() {
                   <div className="ticker-label">{T.efficiency}</div>
                 </div>
                 <div className="ticker-item">
-                  <span className="ticker-val" style={{ color: '#00ff88' }}>LIVE</span>
+                  <span className="ticker-val" style={{ color: 'var(--ok-green)' }}>LIVE</span>
                   <div className="ticker-label">{T.realtime}</div>
                 </div>
               </div>
