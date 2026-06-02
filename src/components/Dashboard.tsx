@@ -1,28 +1,22 @@
-/**
- * Dashboard
- * แสดง: Section mockup ของ Real-Time Monitoring Dashboard
- *        ประกอบด้วย header bar, grid ตัวชี้วัด 8 ค่า (voltage, current, PF ฯลฯ),
- *        mini bar chart การใช้พลังงาน 12 ชั่วโมง, และรายการ Fault & Status alerts
- * Section: #dashboard — ส่วนที่ 5 ของหน้า
- * Props: ไม่มี
- *
- * หมายเหตุ: animation ของ mini bars (เคลื่อนไหวตอน scroll เข้า viewport)
- *           ถูกจัดการโดย ScrollAnimations component
- */
+'use client';
+
+import { useApp } from '@/context/AppContext';
+import { t } from '@/lib/translations';
+
 export default function Dashboard() {
+  const { lang } = useApp();
+  const T = t[lang].dashboard;
+
   return (
     <section id="dashboard">
       <div className="container">
         <div className="fade-up">
-          <div className="section-tag">Real-Time Dashboard</div>
-          <div className="section-title">Real-Time Monitoring Dashboard</div>
-          <p className="section-desc">
-            ศูนย์ควบคุมอัจฉริยะ เห็นสถานะเสาไฟทุกต้นแบบเรียลไทม์ในหน้าจอเดียว
-          </p>
+          <div className="section-tag">{T.tag}</div>
+          <div className="section-title">{T.title}</div>
+          <p className="section-desc">{T.desc}</p>
         </div>
 
         <div className="dashboard-mockup fade-up" style={{ transitionDelay: '0.15s' }}>
-          {/* Header */}
           <div className="dashboard-header">
             <span className="dashboard-title">
               MASTGUARD AI — CONTROL CENTER · Zone A: Expressway Sector 7
@@ -33,7 +27,6 @@ export default function Dashboard() {
             </div>
           </div>
 
-          {/* Metrics grid */}
           <div className="dashboard-body">
             <div className="dash-metric">
               <span className="dash-metric-val ok">48</span>
@@ -77,24 +70,13 @@ export default function Dashboard() {
             </div>
           </div>
 
-          {/* Charts */}
           <div className="dashboard-charts">
-            {/* Energy bar chart */}
             <div className="dash-chart-card">
               <div className="dash-chart-title">ENERGY USAGE — LAST 12 HOURS (kWh)</div>
               <div className="mini-bars">
-                <div className="mini-bar" style={{ height: '40%' }} title="18:00"></div>
-                <div className="mini-bar" style={{ height: '95%' }} title="19:00"></div>
-                <div className="mini-bar" style={{ height: '100%' }} title="20:00"></div>
-                <div className="mini-bar" style={{ height: '90%' }} title="21:00"></div>
-                <div className="mini-bar" style={{ height: '80%' }} title="22:00"></div>
-                <div className="mini-bar" style={{ height: '70%' }} title="23:00"></div>
-                <div className="mini-bar" style={{ height: '50%' }} title="00:00"></div>
-                <div className="mini-bar" style={{ height: '35%' }} title="01:00"></div>
-                <div className="mini-bar" style={{ height: '30%' }} title="02:00"></div>
-                <div className="mini-bar" style={{ height: '28%' }} title="03:00"></div>
-                <div className="mini-bar" style={{ height: '30%' }} title="04:00"></div>
-                <div className="mini-bar" style={{ height: '55%' }} title="05:00"></div>
+                {[40, 95, 100, 90, 80, 70, 50, 35, 30, 28, 30, 55].map((h, i) => (
+                  <div key={i} className="mini-bar" style={{ height: `${h}%` }} />
+                ))}
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '8px' }}>
                 <span style={{ fontSize: '10px', color: 'var(--gray-600)', fontFamily: 'var(--font-mono)' }}>18:00</span>
@@ -103,7 +85,6 @@ export default function Dashboard() {
               </div>
             </div>
 
-            {/* Fault list */}
             <div className="dash-chart-card">
               <div className="dash-chart-title">FAULT &amp; STATUS ALERTS</div>
               <div className="fault-list">

@@ -22,6 +22,8 @@ export const metadata: Metadata = {
     "ระบบบริหารจัดการเสาไฟ High-Mast อัจฉริยะด้วย AI และ IoT สำหรับ Smart City, โรงงาน, ท่าเรือ และโครงสร้างพื้นฐานขนาดใหญ่ โดย T2B Intertrade",
 };
 
+import { AppProvider } from '@/context/AppContext';
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -29,8 +31,11 @@ export default function RootLayout({
     <html
       lang="th"
       className={`${kanit.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
     >
-      <body>{children}</body>
+      <body>
+        <AppProvider>{children}</AppProvider>
+      </body>
     </html>
   );
 }

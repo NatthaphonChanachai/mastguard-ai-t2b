@@ -1,28 +1,15 @@
-/**
- * Navbar
- * แสดง: แถบนำทางแบบ fixed ด้านบนสุดของหน้า ประกอบด้วยโลโก้ T2B/MastGuard AI,
- *        ลิงก์นำทางไปยัง section ต่างๆ, และปุ่ม "Request Demo"
- * Section: Navigation — fixed top (z-index 100)
- * Props: ไม่มี
- *
- * หมายเหตุ: ใช้ 'use client' เพราะต้องการ useState สำหรับ hamburger menu
- *           และ useEffect สำหรับ scroll-based active link highlighting
- */
 'use client';
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-
-const navItems = [
-  { href: '#problem', label: 'Problem' },
-  { href: '#solution', label: 'Solution' },
-  { href: '#features', label: 'Features' },
-  { href: '#dashboard', label: 'Dashboard' },
-  { href: '#usecases', label: 'Use Cases' },
-  { href: '#about', label: 'About T2B' },
-];
+import { Sun, Moon } from 'lucide-react';
+import { useApp } from '@/context/AppContext';
+import { t } from '@/lib/translations';
 
 export default function Navbar() {
+  const { lang, setLang, theme, toggleTheme } = useApp();
+  const T = t[lang].nav;
+
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
 
@@ -36,7 +23,6 @@ export default function Navbar() {
       });
       setActiveSection(current);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -63,16 +49,12 @@ export default function Navbar() {
       </a>
 
       <ul className={`nav-links${isOpen ? ' open' : ''}`} id="navLinks">
-        {navItems.map((item) => (
+        {T.items.map((item) => (
           <li key={item.href}>
             <a
               href={item.href}
               onClick={handleLinkClick}
-              style={
-                activeSection === item.href.slice(1)
-                  ? { color: 'var(--electric)' }
-                  : {}
-              }
+              style={activeSection === item.href.slice(1) ? { color: 'var(--electric)' } : {}}
             >
               {item.label}
             </a>
@@ -80,21 +62,42 @@ export default function Navbar() {
         ))}
         <li>
           <a href="#contact" className="nav-cta" onClick={handleLinkClick}>
-            Request Demo
+            {T.requestDemo}
           </a>
         </li>
       </ul>
 
-      <button
-        className="nav-hamburger"
-        id="hamburger"
-        aria-label="เมนู"
-        onClick={() => setIsOpen((prev) => !prev)}
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <div className="nav-right">
+        <div className="nav-controls">
+          <button
+            className="nav-lang-btn"
+            onClick={() => setLang(lang === 'th' ? 'en' : 'th')}
+            aria-label="Toggle language"
+          >
+            {lang === 'th' ? 'EN' : 'ไทย'}
+          </button>
+          <button
+            className="nav-theme-btn"
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark'
+              ? <Sun size={16} strokeWidth={2} />
+              : <Moon size={16} strokeWidth={2} />}
+          </button>
+        </div>
+
+        <button
+          className="nav-hamburger"
+          id="hamburger"
+          aria-label="เมนู"
+          onClick={() => setIsOpen((prev) => !prev)}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </nav>
   );
 }

@@ -1,59 +1,64 @@
-/**
- * Hero
- * แสดง: ส่วน Hero หลักของหน้า ความสูงเต็มจอ ประกอบด้วย:
- *        - ด้านซ้าย: badge, ชื่อผลิตภัณฑ์, คำอธิบาย, ปุ่ม CTA 2 ปุ่ม
- *        - ด้านขวา: การ์ด Live Monitoring preview พร้อม SVG animated high-mast poles,
- *                   data chips, และ status ticker
- * Section: #home — Hero section (ส่วนแรกของหน้า)
- * Props: ไม่มี
- */
+'use client';
+
 import { Play, ArrowRight } from 'lucide-react';
+import { useApp } from '@/context/AppContext';
+import { t } from '@/lib/translations';
 
 export default function Hero() {
+  const { lang } = useApp();
+  const T = t[lang].hero;
+
   return (
     <section className="hero" id="home">
       <div className="hero-bg"></div>
       <div className="container">
         <div className="hero-content">
 
-          {/* LEFT — text content */}
           <div className="hero-left fade-up">
             <div className="hero-badge">
               <div className="hero-badge-dot"></div>
-              AIoT Smart Infrastructure Platform
+              {T.badge}
             </div>
             <div className="hero-title">
               MAST<span>GUARD</span> AI
             </div>
-            <div className="hero-subtitle">
-              AIoT Smart High-Mast Lighting Management System
-            </div>
-            <p className="hero-desc">
-              ระบบบริหารจัดการเสาไฟ High-Mast อัจฉริยะด้วย AI และ IoT<br />
-              ตรวจสอบสถานะไฟ
-              <strong style={{ color: 'var(--white)' }}>แบบเรียลไทม์</strong>{' '}
-              วิเคราะห์ความผิดปกติ<br />
-              คาดการณ์การซ่อมบำรุง และเพิ่มประสิทธิภาพการใช้พลังงาน
-            </p>
+            <div className="hero-subtitle">{T.subtitle}</div>
+
+            {lang === 'th' ? (
+              <p className="hero-desc">
+                ระบบบริหารจัดการเสาไฟ High-Mast อัจฉริยะด้วย AI และ IoT<br />
+                ตรวจสอบสถานะไฟ{' '}
+                <strong style={{ color: 'var(--white)' }}>แบบเรียลไทม์</strong>{' '}
+                วิเคราะห์ความผิดปกติ<br />
+                คาดการณ์การซ่อมบำรุง และเพิ่มประสิทธิภาพการใช้พลังงาน
+              </p>
+            ) : (
+              <p className="hero-desc">
+                Intelligent AI &amp; IoT management system for High-Mast lighting infrastructure.{' '}
+                Monitor lamp status{' '}
+                <strong style={{ color: 'var(--white)' }}>in real-time</strong>,
+                detect anomalies,<br />
+                predict maintenance needs, and optimize energy efficiency.
+              </p>
+            )}
+
             <div className="hero-actions">
               <a href="#contact" className="btn-primary">
                 <Play size={14} strokeWidth={2.5} />
-                Request Demo
+                {T.requestDemo}
               </a>
               <a href="#solution" className="btn-outline">
-                Explore Solution
+                {T.exploreSolution}
                 <ArrowRight size={15} strokeWidth={1.5} />
               </a>
             </div>
           </div>
 
-          {/* RIGHT — Dashboard preview card */}
           <div className="hero-visual fade-up" style={{ transitionDelay: '0.2s' }}>
             <div className="pole-card" style={{ width: '100%', maxWidth: '420px' }}>
-              <div className="pole-mini-title">LIVE MONITORING — HIGH-MAST ZONE A</div>
+              <div className="pole-mini-title">{T.liveMonitoring}</div>
 
               <div className="pole-svg-container">
-                {/* Pole 1 */}
                 <svg width="200" height="200" viewBox="0 0 200 200" fill="none"
                   xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <rect x="0" y="180" width="200" height="20" fill="rgba(0,180,255,0.06)" rx="4" />
@@ -81,7 +86,6 @@ export default function Hero() {
                   <text x="106" y="113" fontSize="9" fill="#00b4ff" opacity="0.5" fontFamily="monospace">METER</text>
                 </svg>
 
-                {/* Pole 2 */}
                 <svg width="180" height="200" viewBox="0 0 180 200" fill="none"
                   xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <rect x="86" y="30" width="8" height="150" fill="#1e3a6e" rx="2" />
@@ -110,19 +114,19 @@ export default function Hero() {
               <div className="status-ticker">
                 <div className="ticker-item">
                   <span className="ticker-val" style={{ color: '#00ff88' }}>48</span>
-                  <div className="ticker-label">โคมออนไลน์</div>
+                  <div className="ticker-label">{T.lampsOnline}</div>
                 </div>
                 <div className="ticker-item">
                   <span className="ticker-val" style={{ color: '#ffa500' }}>2</span>
-                  <div className="ticker-label">แจ้งเตือน</div>
+                  <div className="ticker-label">{T.alerts}</div>
                 </div>
                 <div className="ticker-item">
                   <span className="ticker-val">94%</span>
-                  <div className="ticker-label">ประสิทธิภาพ</div>
+                  <div className="ticker-label">{T.efficiency}</div>
                 </div>
                 <div className="ticker-item">
                   <span className="ticker-val" style={{ color: '#00ff88' }}>LIVE</span>
-                  <div className="ticker-label">Real-Time</div>
+                  <div className="ticker-label">{T.realtime}</div>
                 </div>
               </div>
             </div>

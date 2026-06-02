@@ -1,36 +1,26 @@
-/**
- * Contact
- * แสดง: Section ติดต่อ T2B Intertrade แบ่งเป็น 2 คอลัมน์
- *        ซ้าย: ข้อความ CTA + ปุ่ม 4 ปุ่ม (Request Demo, โทร, ขอใบเสนอราคา, นัดสำรวจ)
- *        ขวา: การ์ดข้อมูลติดต่อ (โทร, email, ที่อยู่, บริษัท)
- * Section: #contact — ส่วนที่ 9 ของหน้า (พื้นหลัง indigo-deep)
- * Props: ไม่มี
- */
+'use client';
+
 import { Play, Phone, Mail, FileText, Map, MapPin, Building2 } from 'lucide-react';
+import { useApp } from '@/context/AppContext';
+import { t } from '@/lib/translations';
 
 export default function Contact() {
+  const { lang } = useApp();
+  const T = t[lang].contact;
+
   return (
     <section id="contact">
       <div className="container">
         <div className="fade-up" style={{ textAlign: 'center', marginBottom: '8px' }}>
-          <div className="section-tag" style={{ justifyContent: 'center' }}>Contact Us</div>
-          <div className="section-title-th">
-            พร้อมยกระดับระบบ High-Mast ของคุณด้วย MastGuard AI
-          </div>
-          <p className="section-desc" style={{ margin: '0 auto' }}>
-            ติดต่อทีมวิศวกรของ T2B Intertrade เพื่อขอ Demo นัดสำรวจหน้างาน
-            หรือปรึกษาการออกแบบระบบ AIoT
-          </p>
+          <div className="section-tag" style={{ justifyContent: 'center' }}>{T.tag}</div>
+          <div className="section-title-th">{T.title}</div>
+          <p className="section-desc" style={{ margin: '0 auto' }}>{T.desc}</p>
         </div>
 
         <div className="contact-grid">
-          {/* Left — CTA buttons */}
           <div className="fade-up">
-            <div className="contact-cta-title">เริ่มต้นได้ง่าย ๆ</div>
-            <div className="contact-cta-desc">
-              ทีมวิศวกรของเราพร้อมให้คำปรึกษา สำรวจหน้างานฟรี
-              และจัดทำข้อเสนอที่เหมาะกับพื้นที่ของคุณโดยเฉพาะ
-            </div>
+            <div className="contact-cta-title">{T.ctaTitle}</div>
+            <div className="contact-cta-desc">{T.ctaDesc}</div>
             <div className="contact-buttons">
               <a
                 href="mailto:engineer@t2b.co.th?subject=Request Demo - MastGuard AI"
@@ -38,15 +28,11 @@ export default function Contact() {
                 style={{ justifyContent: 'center' }}
               >
                 <Play size={15} strokeWidth={2} />
-                Request Demo — ขอทดลองระบบ
+                {T.btnDemo}
               </a>
-              <a
-                href="tel:021528895"
-                className="btn-outline"
-                style={{ justifyContent: 'center' }}
-              >
+              <a href="tel:021528895" className="btn-outline" style={{ justifyContent: 'center' }}>
                 <Phone size={15} strokeWidth={1.5} />
-                ติดต่อทีมวิศวกร 02-152-8895
+                {T.btnPhone}
               </a>
               <a
                 href="mailto:engineer@t2b.co.th?subject=Quotation - MastGuard AI"
@@ -54,7 +40,7 @@ export default function Contact() {
                 style={{ justifyContent: 'center' }}
               >
                 <FileText size={15} strokeWidth={1.5} />
-                ขอใบเสนอราคา (Quotation)
+                {T.btnQuote}
               </a>
               <a
                 href="mailto:engineer@t2b.co.th?subject=Site Survey - MastGuard AI"
@@ -62,21 +48,20 @@ export default function Contact() {
                 style={{ justifyContent: 'center' }}
               >
                 <Map size={15} strokeWidth={1.5} />
-                นัดสำรวจหน้างาน (Site Survey)
+                {T.btnSurvey}
               </a>
             </div>
           </div>
 
-          {/* Right — contact info card */}
           <div className="contact-info-card fade-up" style={{ transitionDelay: '0.15s' }}>
-            <div className="contact-info-title">CONTACT INFORMATION</div>
+            <div className="contact-info-title">{T.infoTitle}</div>
 
             <div className="contact-item">
               <div className="contact-item-icon">
                 <Phone size={18} color="#00b4ff" strokeWidth={1.5} />
               </div>
               <div>
-                <div className="contact-item-label">Phone</div>
+                <div className="contact-item-label">{T.labelPhone}</div>
                 <div className="contact-item-val">02-152-8895</div>
               </div>
             </div>
@@ -86,7 +71,7 @@ export default function Contact() {
                 <Mail size={18} color="#00b4ff" strokeWidth={1.5} />
               </div>
               <div>
-                <div className="contact-item-label">Email</div>
+                <div className="contact-item-label">{T.labelEmail}</div>
                 <div className="contact-item-val">engineer@t2b.co.th</div>
               </div>
             </div>
@@ -96,10 +81,9 @@ export default function Contact() {
                 <MapPin size={18} color="#00b4ff" strokeWidth={1.5} />
               </div>
               <div>
-                <div className="contact-item-label">Address</div>
+                <div className="contact-item-label">{T.labelAddress}</div>
                 <div className="contact-item-val">
-                  55/39 คาซ่าซิตี้ หมู่ 11 ซอย 6<br />
-                  ต.บึงคำพร้อย อ.ลำลูกกา จ.ปทุมธานี 12150
+                  {T.address1}<br />{T.address2}
                 </div>
               </div>
             </div>
@@ -109,12 +93,10 @@ export default function Contact() {
                 <Building2 size={18} color="#00b4ff" strokeWidth={1.5} />
               </div>
               <div>
-                <div className="contact-item-label">Company</div>
+                <div className="contact-item-label">{T.labelCompany}</div>
                 <div className="contact-item-val">
                   T2B Intertrade Co., Ltd.<br />
-                  <span style={{ fontSize: '12px', color: 'var(--gray-400)' }}>
-                    เลขทะเบียน 0135554004406
-                  </span>
+                  <span style={{ fontSize: '12px', color: 'var(--gray-400)' }}>{T.regLabel}</span>
                 </div>
               </div>
             </div>
