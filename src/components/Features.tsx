@@ -6,7 +6,7 @@
  * Section: #features — ส่วนที่ 4 ของหน้า
  * Props: ไม่มี
  */
-import { ScanSearch, TrendingUp, Zap, GitFork } from 'lucide-react';
+import { ScanSearch, TrendingUp, Zap, GitFork, Leaf } from 'lucide-react';
 
 const ICON_COLOR = '#00b4ff';
 const ICON_SIZE = 22;
@@ -17,7 +17,7 @@ export default function Features() {
       <div className="container">
         <div className="fade-up">
           <div className="section-tag">AI Capabilities</div>
-          <div className="section-title">ความสามารถ AI หลัก 4 ด้าน</div>
+          <div className="section-title">ความสามารถ AI หลัก 5 ด้าน</div>
           <p className="section-desc">
             ขับเคลื่อนด้วย Machine Learning และ Data Analytics สำหรับ High-Mast Lighting
             โดยเฉพาะ
@@ -91,6 +91,35 @@ export default function Features() {
                 ตู้ควบคุมผิดปกติ
               </strong>{' '}
               เพื่อให้ทีมซ่อมเตรียมอุปกรณ์ได้ถูกต้องตั้งแต่แรก
+            </div>
+          </div>
+
+          {/* 05 — Carbon & ESG Intelligence */}
+          <div className="feature-card fade-up" style={{ transitionDelay: '0.25s', gridColumn: '1 / -1' }}>
+            <div className="feature-number">05</div>
+            <div className="feature-icon-box">
+              <Leaf size={ICON_SIZE} color={ICON_COLOR} strokeWidth={1.5} />
+            </div>
+            <div className="feature-en">Carbon & ESG Intelligence</div>
+            <div className="feature-th">ติดตามคาร์บอนและรองรับ ESG</div>
+            <div className="feature-desc" style={{ maxWidth: '780px' }}>
+              AI คำนวณปริมาณ CO₂ ที่ลดได้แบบเรียลไทม์จากข้อมูลพลังงานจริงของแต่ละเสาไฟ
+              โดยใช้{' '}
+              <strong style={{ color: 'var(--white)' }}>
+                ค่า Emission Factor ของ กฟผ. เปรียบเทียบกับ Baseline
+              </strong>{' '}
+              เพื่อระบุปริมาณ tCO₂e ที่ลดได้จริง พร้อมสร้างรายงานอัตโนมัติรายเดือน/รายปี
+              รองรับมาตรฐาน{' '}
+              <strong style={{ color: 'var(--white)' }}>
+                T-VER (Thailand Voluntary Emission Reduction) และ TGO
+              </strong>{' '}
+              สนับสนุน ESG Reporting สำหรับองค์กรภาครัฐและเอกชนที่ต้องการแสดงความรับผิดชอบด้านสิ่งแวดล้อม
+            </div>
+            <div className="carbon-tags">
+              <span className="carbon-tag">Actual vs Baseline kWh</span>
+              <span className="carbon-tag">tCO₂e Auto-Calculate</span>
+              <span className="carbon-tag">T-VER / TGO Report</span>
+              <span className="carbon-tag">ESG Dashboard</span>
             </div>
           </div>
         </div>

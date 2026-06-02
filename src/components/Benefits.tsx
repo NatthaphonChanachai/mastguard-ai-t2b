@@ -44,6 +44,7 @@ export default function Benefits() {
             <div className="benefit-title">ลดการใช้พลังงาน</div>
             <div className="benefit-desc">
               AI ปรับสเกดูลและความสว่างให้เหมาะสมกับบริบทจริง
+              พลังงานที่ประหยัดได้แปลงเป็น CO₂ ที่ลดลงโดยตรง
             </div>
           </div>
 
@@ -56,10 +57,11 @@ export default function Benefits() {
           </div>
 
           <div className="benefit-card fade-up" style={{ transitionDelay: '0.3s' }}>
-            <div className="benefit-number">📋</div>
-            <div className="benefit-title">ข้อมูลวางแผนงบประมาณ</div>
+            <div className="benefit-number">CO₂↓</div>
+            <div className="benefit-title">รองรับ Carbon Credit</div>
             <div className="benefit-desc">
-              รายงานอัตโนมัติและประวัติข้อมูลช่วยวางแผนงบระยะยาวได้แม่นยำ
+              AI คำนวณ CO₂ reduction จากพลังงานจริง พร้อม report
+              มาตรฐาน T-VER / TGO สำหรับนำไปขอรับรองคาร์บอนเครดิต
             </div>
           </div>
         </div>
