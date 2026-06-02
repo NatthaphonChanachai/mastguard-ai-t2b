@@ -50,9 +50,9 @@ export default function Navbar() {
           <Image
             src="/T2B_Logo.png"
             alt="T2B Intertrade"
-            width={38}
-            height={38}
-            style={{ width: '38px', height: '38px', objectFit: 'cover' }}
+            width={44}
+            height={44}
+            style={{ width: '44px', height: '44px', objectFit: 'cover' }}
             priority
           />
         </div>
