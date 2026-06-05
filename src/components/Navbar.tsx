@@ -14,6 +14,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const pathname = usePathname();
+  const isHome = pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,9 +32,12 @@ export default function Navbar() {
 
   const handleLinkClick = () => setIsOpen(false);
 
+  // Prefix hash links with '/' when not on homepage so they navigate correctly
+  const hashHref = (href: string) => isHome ? href : `/${href}`;
+
   return (
     <nav id="navbar">
-      <a href="#" className="nav-logo" aria-label="T2B Intertrade">
+      <a href="/" className="nav-logo" aria-label="T2B Intertrade">
         <div className="nav-logo-icon" style={{ overflow: 'hidden', padding: 0 }}>
           <Image
             src="/T2B_Logo.png"
@@ -54,9 +58,9 @@ export default function Navbar() {
         {T.items.map((item) => (
           <li key={item.href}>
             <a
-              href={item.href}
+              href={hashHref(item.href)}
               onClick={handleLinkClick}
-              style={activeSection === item.href.slice(1) ? { color: 'var(--electric)' } : {}}
+              style={isHome && activeSection === item.href.slice(1) ? { color: 'var(--electric)' } : {}}
             >
               {item.label}
             </a>
@@ -81,7 +85,7 @@ export default function Navbar() {
           </a>
         </li>
         <li>
-          <a href="#contact" className="nav-cta" onClick={handleLinkClick}>
+          <a href={hashHref('#contact')} className="nav-cta" onClick={handleLinkClick}>
             {T.requestDemo}
           </a>
         </li>

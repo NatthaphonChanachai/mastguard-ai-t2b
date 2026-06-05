@@ -14,18 +14,16 @@ const img4 = require('@/png/highmash 4.png') as StaticImageData;
 const img5 = require('@/png/highmash 5.png') as StaticImageData;
 const img6 = require('@/png/highmash 6.png') as StaticImageData;
 const img7 = require('@/png/highmash 7.png') as StaticImageData;
-const img8 = require('@/png/highmash 8.png') as StaticImageData;
+const img8 = require('@/png/highmash 8.png') as StaticImageData;  // technician on cherry picker
 /* eslint-enable @typescript-eslint/no-require-imports */
 
 const ALL_IMAGES: { src: StaticImageData; alt: string }[] = [
-  { src: img1, alt: 'High-Mast Installation Zone A' },
-  { src: img2, alt: 'LED Luminaire Crown Close-Up' },
-  { src: img3, alt: 'Infrastructure Overview' },
-  { src: img4, alt: 'Field Engineering Team Installation' },
-  { src: img5, alt: 'Industrial Site High-Mast' },
-  { src: img6, alt: 'Port Facility Lighting' },
-  { src: img7, alt: 'Smart City High-Mast Grid' },
-  { src: img8, alt: 'Aerial Maintenance Cherry Picker' },
+  { src: img1, alt: 'เสา High-Mast — โซน A' },
+  { src: img2, alt: 'โคม LED Luminaire Crown' },
+  { src: img3, alt: 'ภาพรวมโครงสร้างพื้นฐาน' },
+  { src: img5, alt: 'เสา High-Mast พื้นที่อุตสาหกรรม' },
+  { src: img6, alt: 'ระบบแสงสว่างท่าเรือ' },
+  { src: img7, alt: 'ระบบไฟ Smart City' },
 ];
 
 const TEAM_EN = [
@@ -37,7 +35,7 @@ const TEAM_EN = [
     tags: ['Safety Certified', 'Height Work', 'IoT Hardware', 'Panel Integration', '48hr Deployment'],
   },
   {
-    photo: img5,
+    photo: img8,
     badge: 'AERIAL MAINTENANCE · CHERRY PICKER',
     title: 'Aerial Maintenance Specialists',
     desc: 'Equipped with aerial work platforms and cherry pickers, our maintenance crew services LED luminaire crowns, replaces drivers and sensors at height, and follows AI-generated preventive maintenance schedules from the MastGuard platform.',
@@ -191,7 +189,7 @@ export default function TeamPage() {
                     src={item.src}
                     alt={item.alt}
                     fill
-                    style={{ objectFit: 'cover' }}
+                    style={{ objectFit: 'cover', objectPosition: 'center 15%' }}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                 </div>
@@ -228,7 +226,7 @@ export default function TeamPage() {
         }
         .team-gallery-item {
           position: relative;
-          aspect-ratio: 4/3;
+          aspect-ratio: 3/4;
           border-radius: 12px;
           overflow: hidden;
           background: var(--bg-card);
@@ -239,7 +237,7 @@ export default function TeamPage() {
           transition: transform 0.45s ease !important;
         }
         .team-gallery-item:hover img {
-          transform: scale(1.07) !important;
+          transform: scale(1.05) !important;
         }
         @media (max-width: 768px) {
           .team-page-grid { grid-template-columns: 1fr !important; }

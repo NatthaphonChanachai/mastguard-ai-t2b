@@ -96,7 +96,7 @@ export default function ResourcesPage() {
                       {isTH ? 'แคตตาล็อกผลิตภัณฑ์' : 'Product Catalog'}
                     </div>
                     <div style={{ fontFamily: 'var(--font-en)', fontSize: '20px', fontWeight: 700, color: 'var(--text-primary)' }}>
-                      Smart Mast IoT 2025
+                      Smart Mast IoT
                     </div>
                   </div>
                 </div>
@@ -222,7 +222,7 @@ export default function ResourcesPage() {
                     src={item.src}
                     alt={item.alt}
                     fill
-                    style={{ objectFit: 'cover', objectPosition: 'center top' }}
+                    style={{ objectFit: 'cover', objectPosition: 'center 15%' }}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                 </div>
@@ -250,7 +250,7 @@ export default function ResourcesPage() {
         }
         .res-gallery-item {
           position: relative;
-          aspect-ratio: 4/3;
+          aspect-ratio: 3/4;
           border-radius: 12px;
           overflow: hidden;
           background: var(--bg-card);
@@ -261,7 +261,7 @@ export default function ResourcesPage() {
           transition: transform 0.45s ease !important;
         }
         .res-gallery-item:hover img {
-          transform: scale(1.07) !important;
+          transform: scale(1.05) !important;
         }
         @media (max-width: 1024px) {
           #resources-cards { grid-template-columns: 1fr !important; }
