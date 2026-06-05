@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import { Sun, Moon } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
@@ -12,6 +13,7 @@ export default function Navbar() {
 
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,6 +62,24 @@ export default function Navbar() {
             </a>
           </li>
         ))}
+        <li>
+          <a
+            href="/resources"
+            onClick={handleLinkClick}
+            style={pathname === '/resources' ? { color: 'var(--electric)' } : {}}
+          >
+            {lang === 'th' ? 'เอกสาร' : 'Resources'}
+          </a>
+        </li>
+        <li>
+          <a
+            href="/team"
+            onClick={handleLinkClick}
+            style={pathname === '/team' ? { color: 'var(--electric)' } : {}}
+          >
+            {lang === 'th' ? 'ทีมงาน' : 'Team'}
+          </a>
+        </li>
         <li>
           <a href="#contact" className="nav-cta" onClick={handleLinkClick}>
             {T.requestDemo}
