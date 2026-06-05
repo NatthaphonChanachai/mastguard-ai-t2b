@@ -11,22 +11,21 @@ import ScrollAnimations from '@/components/ScrollAnimations';
 const img1 = require('@/png/highmash 1.png') as StaticImageData;
 const img2 = require('@/png/highmash 2.png') as StaticImageData;
 const img3 = require('@/png/highmash 3.png') as StaticImageData;
-const img4 = require('@/png/highmash 4.png') as StaticImageData;
 const img5 = require('@/png/highmash 5.png') as StaticImageData;
 const img6 = require('@/png/highmash 6.png') as StaticImageData;
 const img7 = require('@/png/highmash 7.png') as StaticImageData;
-const img8 = require('@/png/highmash 8.png') as StaticImageData;
 /* eslint-enable @typescript-eslint/no-require-imports */
 
+const CATALOG_URL = 'https://drive.google.com/file/d/11-u6TFq0RPR7CgELXRfBD_toIpKSuJST/view?usp=sharing';
+const VIDEO_URL   = 'https://drive.google.com/file/d/1XREX6975U44OgE0VX5rNZDKztD0692KX/view?usp=sharing';
+
 const ALL_IMAGES: { src: StaticImageData; alt: string }[] = [
-  { src: img1, alt: 'High-Mast Installation Zone A' },
-  { src: img2, alt: 'LED Luminaire Crown Close-Up' },
-  { src: img3, alt: 'Infrastructure Overview' },
-  { src: img4, alt: 'Field Engineering Team Installation' },
-  { src: img5, alt: 'Industrial Site High-Mast' },
-  { src: img6, alt: 'Port Facility Lighting' },
-  { src: img7, alt: 'Smart City High-Mast Grid' },
-  { src: img8, alt: 'Aerial Maintenance Cherry Picker' },
+  { src: img1, alt: 'เสา High-Mast — โซน A' },
+  { src: img2, alt: 'โคม LED Luminaire Crown' },
+  { src: img3, alt: 'ภาพรวมโครงสร้างพื้นฐาน' },
+  { src: img5, alt: 'เสา High-Mast พื้นที่อุตสาหกรรม' },
+  { src: img6, alt: 'ระบบแสงสว่างท่าเรือ' },
+  { src: img7, alt: 'ระบบไฟ Smart City' },
 ];
 
 export default function ResourcesPage() {
@@ -118,7 +117,7 @@ export default function ResourcesPage() {
                   ))}
                 </div>
 
-                <a href="#" className="btn-primary" style={{ justifyContent: 'center' }}>
+                <a href={CATALOG_URL} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ justifyContent: 'center' }}>
                   <Download size={15} strokeWidth={2} />
                   {isTH ? 'ดาวน์โหลดแคตตาล็อก' : 'Download Catalog'}
                 </a>
@@ -192,7 +191,7 @@ export default function ResourcesPage() {
                     : 'System introduction covering MastGuard AI architecture, live monitoring demonstration, and real-world AI alert examples in deployed environments.'}
                 </p>
 
-                <a href="#" className="btn-outline" style={{ justifyContent: 'center' }}>
+                <a href={VIDEO_URL} target="_blank" rel="noopener noreferrer" className="btn-outline" style={{ justifyContent: 'center' }}>
                   <Play size={15} strokeWidth={2} />
                   {isTH ? 'ชมวิดีโอแนะนำ' : 'Watch Introduction Video'}
                 </a>
@@ -223,7 +222,7 @@ export default function ResourcesPage() {
                     src={item.src}
                     alt={item.alt}
                     fill
-                    style={{ objectFit: 'cover' }}
+                    style={{ objectFit: 'cover', objectPosition: 'center top' }}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                 </div>

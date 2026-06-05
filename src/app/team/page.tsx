@@ -30,7 +30,7 @@ const ALL_IMAGES: { src: StaticImageData; alt: string }[] = [
 
 const TEAM_EN = [
   {
-    photo: img1,
+    photo: img4,
     badge: 'FIELD INSTALLATION · SAFETY CERTIFIED',
     title: 'Installation Engineering Team',
     desc: 'Our certified field engineers handle the complete installation of IoT Controllers, Sensors, and Power Meters into High-Mast control panels. They perform site surveys, cable routing, system commissioning, and final acceptance testing.',
@@ -47,7 +47,7 @@ const TEAM_EN = [
 
 const TEAM_TH = [
   {
-    photo: img1,
+    photo: img4,
     badge: 'ติดตั้งภาคสนาม · ผ่านการรับรอง',
     title: 'ทีมวิศวกรติดตั้ง',
     desc: 'วิศวกรภาคสนามที่ผ่านการรับรองของเราดำเนินการติดตั้ง IoT Controller, Sensor และ Power Meter เข้ากับตู้ควบคุมเสา High-Mast ที่อยู่บนที่สูงได้ครบวงจร ตั้งแต่การสำรวจหน้างาน ทดสอบระบบ และตรวจรับงาน',
@@ -107,7 +107,7 @@ export default function TeamPage() {
                       src={member.photo}
                       alt={member.title}
                       fill
-                      style={{ objectFit: 'cover' }}
+                      style={{ objectFit: 'cover', objectPosition: 'center top' }}
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
                     {/* Badge overlay */}
