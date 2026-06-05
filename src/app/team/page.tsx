@@ -105,7 +105,7 @@ export default function TeamPage() {
                       src={member.photo}
                       alt={member.title}
                       fill
-                      style={{ objectFit: 'cover', objectPosition: 'center top' }}
+                      style={{ objectFit: 'cover', objectPosition: 'center 65%' }}
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
                     {/* Badge overlay */}
