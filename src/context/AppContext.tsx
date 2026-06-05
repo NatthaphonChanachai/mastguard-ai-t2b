@@ -26,6 +26,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const savedLang = localStorage.getItem('mg-lang') as Lang | null;
     const savedTheme = localStorage.getItem('mg-theme') as Theme | null;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (savedLang === 'th' || savedLang === 'en') setLangState(savedLang);
     if (savedTheme === 'dark' || savedTheme === 'light') setThemeState(savedTheme);
   }, []);

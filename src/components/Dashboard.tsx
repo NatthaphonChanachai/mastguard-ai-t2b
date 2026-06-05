@@ -7,6 +7,9 @@ export default function Dashboard() {
   const { lang } = useApp();
   const T = t[lang].dashboard;
 
+  const barHeights = [38, 92, 100, 88, 76, 66, 48, 34, 28, 26, 30, 52];
+  const barTimes  = ['18:00', '', '', '', '', '00:00', '', '', '', '', '', '06:00'];
+
   return (
     <section id="dashboard">
       <div className="container">
@@ -16,27 +19,29 @@ export default function Dashboard() {
           <p className="section-desc">{T.desc}</p>
         </div>
 
-        <div className="dashboard-mockup fade-up" style={{ transitionDelay: '0.15s' }}>
+        <div className="dashboard-mockup fade-up" style={{ transitionDelay: '0.12s' }}>
+          {/* ── Header bar ── */}
           <div className="dashboard-header">
             <span className="dashboard-title">
-              MASTGUARD AI — CONTROL CENTER · Zone A: Expressway Sector 7
+              MASTGUARD AI · CONTROL CENTER — Zone A: Expressway Sector 7
             </span>
             <div className="dashboard-status">
               <div className="status-live"></div>
-              LIVE · Updated 0.8s ago
+              LIVE · 0.8s
             </div>
           </div>
 
+          {/* ── 8 KPI metrics ── */}
           <div className="dashboard-body">
             <div className="dash-metric">
               <span className="dash-metric-val ok">48</span>
-              <span className="dash-metric-unit">/ 50</span>
-              <span className="dash-metric-label">Lamp Online</span>
+              <span className="dash-metric-unit">/ 50 LAMPS</span>
+              <span className="dash-metric-label">Online</span>
             </div>
             <div className="dash-metric">
               <span className="dash-metric-val warn">2</span>
-              <span className="dash-metric-unit">ALERT</span>
-              <span className="dash-metric-label">Fault Active</span>
+              <span className="dash-metric-unit">ACTIVE</span>
+              <span className="dash-metric-label">Faults</span>
             </div>
             <div className="dash-metric">
               <span className="dash-metric-val">228.4</span>
@@ -70,21 +75,37 @@ export default function Dashboard() {
             </div>
           </div>
 
+          {/* ── Charts area ── */}
           <div className="dashboard-charts">
+            {/* Energy chart */}
             <div className="dash-chart-card">
               <div className="dash-chart-title">ENERGY USAGE — LAST 12 HOURS (kWh)</div>
-              <div className="mini-bars">
-                {[40, 95, 100, 90, 80, 70, 50, 35, 30, 28, 30, 55].map((h, i) => (
+              <div className="mini-bars" role="img" aria-label="Energy usage bar chart">
+                {barHeights.map((h, i) => (
                   <div key={i} className="mini-bar" style={{ height: `${h}%` }} />
                 ))}
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '8px' }}>
-                <span style={{ fontSize: '10px', color: 'var(--gray-600)', fontFamily: 'var(--font-mono)' }}>18:00</span>
-                <span style={{ fontSize: '10px', color: 'var(--gray-600)', fontFamily: 'var(--font-mono)' }}>00:00</span>
-                <span style={{ fontSize: '10px', color: 'var(--gray-600)', fontFamily: 'var(--font-mono)' }}>06:00</span>
+              <div style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                marginTop: '8px',
+              }}>
+                {barTimes.map((label, i) => (
+                  <span key={i} style={{
+                    flex: 1,
+                    fontSize: '9px',
+                    color: 'var(--text-faint)',
+                    fontFamily: 'var(--font-mono)',
+                    textAlign: 'center',
+                    opacity: label ? 1 : 0,
+                  }}>
+                    {label || '.'}
+                  </span>
+                ))}
               </div>
             </div>
 
+            {/* Fault list */}
             <div className="dash-chart-card">
               <div className="dash-chart-title">FAULT &amp; STATUS ALERTS</div>
               <div className="fault-list">
@@ -100,12 +121,12 @@ export default function Dashboard() {
                 </div>
                 <div className="fault-item ok">
                   <div className="fault-dot green"></div>
-                  <div className="fault-name">Pole #01-06</div>
+                  <div className="fault-name">Pole #01–06</div>
                   <div className="fault-status ok">NORMAL</div>
                 </div>
                 <div className="fault-item ok">
                   <div className="fault-dot green"></div>
-                  <div className="fault-name">Pole #08-50</div>
+                  <div className="fault-name">Pole #08–50</div>
                   <div className="fault-status ok">NORMAL</div>
                 </div>
               </div>

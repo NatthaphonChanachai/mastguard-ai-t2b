@@ -20,7 +20,8 @@ export default function Icon() {
           display: 'flex',
         }}
       >
-        <img src={imgSrc} width={256} height={256} />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={imgSrc} alt="" width={256} height={256} />
       </div>
     ),
     { width: 256, height: 256 }
