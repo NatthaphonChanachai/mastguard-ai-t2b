@@ -235,13 +235,6 @@ export default function Hero() {
                   <rect x="129" y="268" width="22" height="2.5" rx="1" fill={c.weld0} />
                   <rect x="129" y="182" width="22" height="2"   rx="1" fill={c.weld1} />
 
-                  {/* ════ ACCESS LADDER (lower section) ════ */}
-                  <rect x="118" y="288" width="2" height="68" rx="1" fill="rgba(75,85,99,0.72)" />
-                  <rect x="160" y="288" width="2" height="68" rx="1" fill="rgba(75,85,99,0.72)" />
-                  {[295, 307, 319, 331, 343, 355].map((y) => (
-                    <rect key={y} x="119" y={y} width="42" height="2.5" rx="1"
-                      fill="rgba(75,85,99,0.88)" stroke="rgba(150,160,175,0.18)" strokeWidth="0.4" />
-                  ))}
 
                   {/* ════ ACCESS DOOR PANEL ════ */}
                   <rect x="130" y="276" width="20" height="28" rx="2"
