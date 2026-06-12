@@ -1,7 +1,7 @@
 'use client';
 
 import Image, { type StaticImageData } from 'next/image';
-import { ExternalLink, Play, FileText, Video } from 'lucide-react';
+import { Download, ExternalLink, Play, FileText, Video, BookOpen } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -16,8 +16,9 @@ const img6 = require('@/png/highmash 6.png') as StaticImageData;
 const img7 = require('@/png/highmash 7.png') as StaticImageData;
 /* eslint-enable @typescript-eslint/no-require-imports */
 
-const CATALOG_URL = 'https://drive.google.com/drive/folders/1pLcQjSqj__hcrNMAP3pikCKeRb2tnaQW';
-const VIDEO_URL   = 'https://drive.google.com/file/d/1XREX6975U44OgE0VX5rNZDKztD0692KX/view?usp=sharing';
+const ALL_PRODUCTS_URL = 'https://drive.google.com/drive/folders/1pLcQjSqj__hcrNMAP3pikCKeRb2tnaQW';
+const CATALOG_URL      = 'https://drive.google.com/file/d/11-u6TFq0RPR7CgELXRfBD_toIpKSuJST/view?usp=sharing';
+const VIDEO_URL        = 'https://drive.google.com/file/d/1XREX6975U44OgE0VX5rNZDKztD0692KX/view?usp=sharing';
 
 const ALL_IMAGES: { src: StaticImageData; alt: string }[] = [
   { src: img1, alt: 'เสา High-Mast — โซน A' },
@@ -51,6 +52,72 @@ export default function ResourcesPage() {
                   ? 'ดาวน์โหลดแคตตาล็อกผลิตภัณฑ์หรือชมวิดีโอแนะนำระบบ เพื่อทำความเข้าใจ MastGuard AI อย่างครบถ้วนก่อนตัดสินใจ'
                   : 'Download the product catalog or watch the introduction video to fully understand MastGuard AI before making your decision.'}
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ── All Products Catalog card ── */}
+        <section style={{ paddingBottom: '0' }}>
+          <div className="container">
+            <div className="fade-up resource-card" style={{
+              background: 'var(--bg-card)',
+              border: '1px solid var(--border-default)',
+              borderRadius: 'var(--radius)',
+              padding: '36px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '20px',
+              position: 'relative',
+              overflow: 'hidden',
+            }}>
+              <div style={{
+                position: 'absolute', top: 0, left: 0, right: 0, height: '2px',
+                background: 'linear-gradient(90deg, #f59e0b, var(--primary), var(--accent))',
+              }} />
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                <div style={{
+                  width: '52px', height: '52px', flexShrink: 0,
+                  background: 'rgba(245,158,11,0.12)',
+                  border: '1px solid rgba(245,158,11,0.28)',
+                  borderRadius: '13px',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                }}>
+                  <BookOpen size={22} color="#f59e0b" strokeWidth={1.5} />
+                </div>
+                <div>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: '#f59e0b', fontWeight: 600, letterSpacing: '1.2px', textTransform: 'uppercase', marginBottom: '4px' }}>
+                    {isTH ? 'แคตตาล็อกสินค้าทั้งหมด' : 'Full Product Catalog'}
+                  </div>
+                  <div style={{ fontFamily: 'var(--font-en)', fontSize: '20px', fontWeight: 700, color: 'var(--text-primary)' }}>
+                    {isTH ? 'T2B Intertrade — สินค้าทั้งหมด' : 'T2B Intertrade — All Products'}
+                  </div>
+                </div>
+              </div>
+
+              <p style={{ fontSize: '14.5px', color: 'var(--text-secondary)', lineHeight: '1.8' }}>
+                {isTH
+                  ? 'รวมแคตตาล็อกผลิตภัณฑ์ทั้งหมดของบริษัท T2B Intertrade ครอบคลุมสินค้าทุกประเภทในพอร์ตโฟลิโอ พร้อมข้อมูลสเปค ราคา และรายละเอียดทางเทคนิคสำหรับประกอบการตัดสินใจ'
+                  : 'Complete product catalog of T2B Intertrade — covering all product lines in our portfolio with full specifications, pricing references, and technical details to support your purchasing decision.'}
+              </p>
+
+              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                {(isTH
+                  ? ['สินค้าทุกประเภท', 'Google Drive', '2025 Edition']
+                  : ['All Product Lines', 'Google Drive', '2025 Edition']
+                ).map((tag) => (
+                  <span key={tag} style={{
+                    fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--text-muted)',
+                    background: 'var(--bg-hover)', border: '1px solid var(--border-subtle)',
+                    padding: '4px 12px', borderRadius: '100px',
+                  }}>{tag}</span>
+                ))}
+              </div>
+
+              <a href={ALL_PRODUCTS_URL} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ justifyContent: 'center', alignSelf: 'flex-start', background: 'rgba(245,158,11,0.15)', borderColor: 'rgba(245,158,11,0.40)', color: '#f59e0b' }}>
+                <ExternalLink size={15} strokeWidth={2} />
+                {isTH ? 'ดูแคตตาล็อกสินค้าทั้งหมด' : 'Browse All Products'}
+              </a>
             </div>
           </div>
         </section>
@@ -118,8 +185,8 @@ export default function ResourcesPage() {
                 </div>
 
                 <a href={CATALOG_URL} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ justifyContent: 'center' }}>
-                  <ExternalLink size={15} strokeWidth={2} />
-                  {isTH ? 'ดูแคตตาล็อกผลิตภัณฑ์' : 'View Product Catalog'}
+                  <Download size={15} strokeWidth={2} />
+                  {isTH ? 'ดาวน์โหลดแคตตาล็อก' : 'Download Catalog'}
                 </a>
               </div>
 
