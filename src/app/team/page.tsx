@@ -7,24 +7,9 @@ import Footer from '@/components/Footer';
 import ScrollAnimations from '@/components/ScrollAnimations';
 
 /* eslint-disable @typescript-eslint/no-require-imports */
-const img1 = require('@/png/highmash 1.png') as StaticImageData;
-const img2 = require('@/png/highmash 2.png') as StaticImageData;
-const img3 = require('@/png/highmash 3.png') as StaticImageData;
 const img4 = require('@/png/highmash 4.png') as StaticImageData;
-const img5 = require('@/png/highmash 5.png') as StaticImageData;
-const img6 = require('@/png/highmash 6.png') as StaticImageData;
-const img7 = require('@/png/highmash 7.png') as StaticImageData;
-const img8 = require('@/png/highmash 8.png') as StaticImageData;  // technician on cherry picker
+const img8 = require('@/png/highmash 8.png') as StaticImageData;
 /* eslint-enable @typescript-eslint/no-require-imports */
-
-const ALL_IMAGES: { src: StaticImageData; alt: string }[] = [
-  { src: img1, alt: 'เสา High-Mast — โซน A' },
-  { src: img2, alt: 'โคม LED Luminaire Crown' },
-  { src: img3, alt: 'ภาพรวมโครงสร้างพื้นฐาน' },
-  { src: img5, alt: 'เสา High-Mast พื้นที่อุตสาหกรรม' },
-  { src: img6, alt: 'ระบบแสงสว่างท่าเรือ' },
-  { src: img7, alt: 'ระบบไฟ Smart City' },
-];
 
 const TEAM_EN = [
   {
@@ -167,37 +152,6 @@ export default function TeamPage() {
           </div>
         </section>
 
-        {/* ── Project gallery ── */}
-        <section>
-          <div className="container">
-            <div className="fade-up" style={{ marginBottom: '40px' }}>
-              <div className="section-tag">{isTH ? 'โครงการที่ดำเนินการแล้ว' : 'Completed Projects'}</div>
-              <h2 className="section-title-th">
-                {isTH ? 'โครงการที่ดำเนินการแล้ว' : 'Completed Projects'}
-              </h2>
-              <p className="section-desc">
-                {isTH
-                  ? 'ภาพจริงจากโครงการติดตั้ง MastGuard AI ในพื้นที่ต่าง ๆ ทั่วประเทศไทย'
-                  : 'Real photographs from MastGuard AI deployment projects across Thailand and the region.'}
-              </p>
-            </div>
-
-            <div className="team-gallery-grid fade-up">
-              {ALL_IMAGES.map((item, i) => (
-                <div key={i} className="team-gallery-item">
-                  <Image
-                    src={item.src}
-                    alt={item.alt}
-                    fill
-                    style={{ objectFit: 'cover', objectPosition: 'center 15%' }}
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
       </main>
       <Footer />
 
@@ -219,32 +173,8 @@ export default function TeamPage() {
           transform: translateY(-4px);
           box-shadow: 0 20px 48px rgba(0,0,0,0.28);
         }
-        .team-gallery-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 16px;
-        }
-        .team-gallery-item {
-          position: relative;
-          aspect-ratio: 3/4;
-          border-radius: 12px;
-          overflow: hidden;
-          background: var(--bg-card);
-          border: 1px solid var(--border-subtle);
-          cursor: pointer;
-        }
-        .team-gallery-item img {
-          transition: transform 0.45s ease !important;
-        }
-        .team-gallery-item:hover img {
-          transform: scale(1.05) !important;
-        }
         @media (max-width: 768px) {
           .team-page-grid { grid-template-columns: 1fr !important; }
-          .team-gallery-grid { grid-template-columns: repeat(2, 1fr) !important; }
-        }
-        @media (max-width: 480px) {
-          .team-gallery-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </>

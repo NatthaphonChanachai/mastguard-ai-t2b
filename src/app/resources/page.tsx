@@ -1,7 +1,7 @@
 'use client';
 
 import Image, { type StaticImageData } from 'next/image';
-import { Download, Play, FileText, Video } from 'lucide-react';
+import { ExternalLink, Play, FileText, Video } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -16,7 +16,7 @@ const img6 = require('@/png/highmash 6.png') as StaticImageData;
 const img7 = require('@/png/highmash 7.png') as StaticImageData;
 /* eslint-enable @typescript-eslint/no-require-imports */
 
-const CATALOG_URL = 'https://drive.google.com/file/d/11-u6TFq0RPR7CgELXRfBD_toIpKSuJST/view?usp=sharing';
+const CATALOG_URL = 'https://drive.google.com/drive/folders/1pLcQjSqj__hcrNMAP3pikCKeRb2tnaQW';
 const VIDEO_URL   = 'https://drive.google.com/file/d/1XREX6975U44OgE0VX5rNZDKztD0692KX/view?usp=sharing';
 
 const ALL_IMAGES: { src: StaticImageData; alt: string }[] = [
@@ -118,8 +118,8 @@ export default function ResourcesPage() {
                 </div>
 
                 <a href={CATALOG_URL} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ justifyContent: 'center' }}>
-                  <Download size={15} strokeWidth={2} />
-                  {isTH ? 'ดาวน์โหลดแคตตาล็อก' : 'Download Catalog'}
+                  <ExternalLink size={15} strokeWidth={2} />
+                  {isTH ? 'ดูแคตตาล็อกผลิตภัณฑ์' : 'View Product Catalog'}
                 </a>
               </div>
 
